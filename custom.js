@@ -48,6 +48,8 @@ function createTyres(count) {
           complete: function() {
             $(this).hide();
 						missCount++;
+						// miss.appendTo("#container");
+      			// document.getElementById("misses").innerHTML = missCount;
           }
         }
       );
