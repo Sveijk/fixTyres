@@ -1,9 +1,9 @@
-//Spawn Tyres
+// Spawn Tyres
 $(document).ready(function() {
   createTyres(25);
 });
 
-//Optional additions
+// Optional additions
 var screenWidth = $(document).width();
 var screenHeight = $(document).height();
 
@@ -15,11 +15,12 @@ var missCount = 0;
 
 var span = $('<span id = "dummy"></span>');
 span.appendTo("#container");
-//End Optional
+// End Optional
 
 function createTyres(count) {
   var delay = 0;
   var hit = $("<h1>" + "Hits: " + "<span id='hits'>" + 0 + "</span>" + "</h1>");
+  var miss = $("<h1>" + "Misses: " + "<span id='misses'>" + 0 + "</span>" + "</h1>");
   for (var i = 0; i < count; i++) {
     var width = Math.floor(Math.random() * (high - low) + low);
     var tyre = $('<img src="flat_tyre.png">');
@@ -28,12 +29,12 @@ function createTyres(count) {
       left: 0,
       top: Math.floor(
         Math.random() * (screenHeight - Math.floor(screenHeight / 5))
-      ), //Give random starting position
+      ), // Give random starting position
       width: width
     });
     tyre.appendTo("#tyre");
-    delay = delay + Math.floor(Math.random() * 2000); //Random delays
-    var speed = Math.floor(Math.random() * 450) + 100; //Random speed
+    delay = delay + Math.floor(Math.random() * 2000); // Random delays
+    var speed = Math.floor(Math.random() * 450) + 100; // Random speed
     tyre
       .hide()
       .delay(delay)
@@ -41,12 +42,12 @@ function createTyres(count) {
       .animate(
         { left: screenWidth },
         {
-          //Hide tyre on start and show one after random delay
+          // Hide tyre on start and show one after random delay
           duration: ($(document).width() / speed) * 1000,
           easing: "linear",
           complete: function() {
             $(this).hide();
-            // missCount++;
+						missCount++;
           }
         }
       );
